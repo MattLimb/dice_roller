@@ -9,7 +9,7 @@ def main():
             find_dice = r"([0-9]*d[0-9]*)*(k[0-9]*)*(.*)"
             dice_groups = re.findall(find_dice, command)
             dice_groups = list(dice_groups)
-            print(dice_groups[:len(dice_groups)-1])
+
             for group in dice_groups[:len(dice_groups)-1]:
                 # Do something With the Dice Bit
                 dice = group[0].split("d")
@@ -24,7 +24,6 @@ def main():
                 result = int()
                 for roll in dice_results:
                     result += roll
-                    print(result)
 
                 # Calculations
                 if group[2] != '':
@@ -33,22 +32,19 @@ def main():
                     if number != (''):
                         for num in number:
                             result += int(num)
-                            print(f"Addition {num}")
 
                     regex = r"[-]([0-9]*)"
                     number = list(re.findall(regex, group[2]))
                     if number != (''):
                         for num in number:
                             result -= int(num)
-                            print(f"Subtraction {num}")
                     
                     regex = r"[*]([0-9]*)"
                     number = list(re.findall(regex, group[2]))
                     if number != (''):
                         for num in number:
                             result *= int(num)
-                            print(f"Multiplication {num}")
-
+                            
                     regex = r"[/]([0-9]*)"
                     number = list(re.findall(regex, group[2]))
                     if number != (''):
